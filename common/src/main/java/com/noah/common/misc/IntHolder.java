@@ -1,4 +1,4 @@
-package com.noah.common;
+package com.noah.common.misc;
 
 public class IntHolder {
     private int value;
@@ -32,3 +32,4 @@ public class IntHolder {
                 '}';
     }
 }
+
