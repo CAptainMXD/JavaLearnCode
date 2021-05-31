@@ -1,27 +1,11 @@
-/*
- * Copyright 2019 wjybxx
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.noah.common.utils;
-
 
 import java.io.File;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.jar.JarEntry;
@@ -68,7 +52,7 @@ public class ClassFinder {
                 URL url = urls.nextElement();
                 String protocol = url.getProtocol();
                 if ("file".equals(protocol)) {
-                    String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
+                    String filePath = URLDecoder.decode(url.getFile(), StandardCharsets.UTF_8);
                     findClassesByFile(classLoader, pkgName, filePath, classes, classNameFilter, classFilter);
                 } else if ("jar".equals(protocol)) {
                     JarFile jar = ((JarURLConnection) url.openConnection()).getJarFile();
@@ -122,7 +106,7 @@ public class ClassFinder {
             }
 
             try {
-                Class clazz = classLoader.loadClass(className);
+                Class<?> clazz = classLoader.loadClass(className);
                 if (classFilter.test(clazz)) {
                     classes.add(clazz);
                 }
