@@ -71,7 +71,9 @@ class Consumer implements Runnable{
         }
     }
 }
+
 public class ProducerConsumerTest {
+
     public static void main(String[] args) {
         Resource resource = new Resource();
         ExecutorProcessPool.getExecutorProcessPool().execute(new Produce(resource));
