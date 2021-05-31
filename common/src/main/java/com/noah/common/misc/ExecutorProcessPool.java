@@ -11,10 +11,14 @@ public class ExecutorProcessPool {
 
     private static ExecutorProcessPool executorProcessPool = new ExecutorProcessPool();
 
-    public ExecutorProcessPool getExecutorProcessPool(){return executorProcessPool;}
+    public static ExecutorProcessPool getExecutorProcessPool(){return executorProcessPool;}
 
     private ExecutorProcessPool(){
         executorService = Executors.newFixedThreadPool(10,getThreadFactory());
+    }
+
+    public void shutdown(){
+        executorService.shutdown();
     }
 
     public Future<?> submit(Runnable runnable){
