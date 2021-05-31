@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-
 
 /**
  * @author mxd

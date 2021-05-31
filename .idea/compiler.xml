@@ -9,8 +9,5 @@
         <module name="common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Noah" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
